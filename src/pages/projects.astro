@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Projects — Keagan Luttrell"
+  description="Things Keagan has built and is building."
+>
+  <h1>Projects</h1>
+  <p class="tagline">A living list. Updated as things ship.</p>
+
+  <div class="card">
+    <h3>Hermes Agent Ecosystem</h3>
+    <p>Multi-agent orchestration with memory, kanban task management, MCP integrations, and autonomous workflows. The system I live in daily.</p>
+    <div class="meta">Ongoing · hermes-agent.nousresearch.com</div>
+  </div>
+
+  <div class="card">
+    <h3>Personal Knowledge Infrastructure</h3>
+    <p>88-page wiki with RAG-powered search. Ingests AI conversation exports, research notes, and project docs. Self-maintaining via automated pipelines.</p>
+    <div class="meta">Ongoing · vault + llm-wiki</div>
+  </div>
+
+  <div class="card">
+    <h3>Cloudflare-Powered Tooling</h3>
+    <p>Workers, Pages, KV, D1 — building serverless infrastructure for AI agent workloads. Edge-first, zero cold starts.</p>
+    <div class="meta">2025 – present</div>
+  </div>
+
+  <div class="card">
+    <h3>Ansible Deployment Automation</h3>
+    <p>Full playbook for packaging and deploying AI agent infrastructure. System deps, config management, secrets, skills — reproducible and auditable.</p>
+    <div class="meta">2025</div>
+  </div>
+
+  <p style="margin-top: 2rem; color: var(--text-muted); font-size: 0.85rem;">
+    More coming. This page updates as things ship.
+  </p>
+</BaseLayout>
