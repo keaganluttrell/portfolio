@@ -42,7 +42,6 @@
   --color-bg-deep: var(--color-navy-950);
   --color-surface: #112240;
   --color-surface-rgb: 17 34 64;
-  --color-surface-2: #1a3a5c;
   --color-surface-glass: rgb(var(--color-surface-rgb) / 76%);
   --color-surface-overlay: rgb(255 255 255 / 3%);
 
