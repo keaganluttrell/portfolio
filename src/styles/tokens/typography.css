@@ -14,14 +14,14 @@
   --font-size-body-sm: 0.875rem;
   --font-size-body: 1rem;
   --font-size-title: clamp(1.25rem, 2vw, 1.5rem);
-  --font-size-headline: clamp(2.25rem, 7vw, 4.75rem);
+  --font-size-headline: clamp(2rem, 5vw, 3.5rem);
 
-  --line-height-display: 0.98;
+  --line-height-display: 1.05;
   --line-height-title: 1.2;
   --line-height-body: 1.75;
   --line-height-compact: 1.45;
 
-  --letter-spacing-tightest: -0.06em;
+  --letter-spacing-tightest: -0.03em;
   --letter-spacing-tight: -0.035em;
   --letter-spacing-slight: -0.015em;
   --letter-spacing-normal: 0;

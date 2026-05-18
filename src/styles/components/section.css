@@ -6,8 +6,8 @@
 .hero::after {
   content: '';
   position: absolute;
-  right: calc(var(--space-18) * -1);
-  top: calc(var(--space-5) * -1);
+  right: calc(var(--space-6) * -1);
+  top: calc(var(--space-4) * -1);
   z-index: -1;
   width: clamp(var(--size-hero-orb-min), 22vw, var(--size-hero-orb-max));
   aspect-ratio: 1;

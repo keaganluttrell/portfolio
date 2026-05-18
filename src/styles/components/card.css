@@ -48,7 +48,7 @@
   font-family: var(--font-family-mono);
   font-size: var(--font-size-caption);
   color: var(--color-accent);
-  margin-top: var(--space-3);
+  margin-top: var(--space-4);
   position: relative;
 }
 
