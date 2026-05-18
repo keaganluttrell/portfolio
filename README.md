@@ -26,7 +26,7 @@ Deployed automatically on push to `main` via GitHub Actions → Cloudflare Pages
 Add these secrets to the GitHub repo (Settings → Secrets → Actions):
 
 - `CLOUDFLARE_API_TOKEN` — needs Pages:Edit permission
-- `CLOUDFLARE_ACCOUNT_ID` — your CF account ID (`f8d5f8a98b0412fdaa2685330ac69356`)
+- `CLOUDFLARE_ACCOUNT_ID` — your CF account ID
 
 Then create the Pages project in Cloudflare dashboard or via `wrangler pages project create keagan-ai`.
 

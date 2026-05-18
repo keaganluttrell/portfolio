@@ -1,38 +1,75 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AnimatedSection from '../components/AnimatedSection';
+import AnimatedCard from '../components/AnimatedCard';
 ---
 <BaseLayout
   title="Projects — Keagan Luttrell"
-  description="Things Keagan has built and is building."
+  description="Things Keagan has built and is building. Agent infrastructure, knowledge systems, deployment automation."
 >
-  <h1>Projects</h1>
-  <p class="tagline">A living list. Updated as things ship.</p>
+  <AnimatedSection className="hero" client:load>
+    <h1>Projects</h1>
+    <p class="tagline">Things I've built. Some shipped, some in progress.</p>
+  </AnimatedSection>
 
-  <div class="card">
-    <h3>Hermes Agent Ecosystem</h3>
-    <p>Multi-agent orchestration with memory, kanban task management, MCP integrations, and autonomous workflows. The system I live in daily.</p>
-    <div class="meta">Ongoing · hermes-agent.nousresearch.com</div>
+  <div class="card-grid">
+    <AnimatedCard client:visible>
+      <h3>Hermes Agent Ecosystem</h3>
+      <p>
+        Multi-agent orchestration with persistent memory, kanban task management, MCP
+        integrations, and autonomous workflows. The system I live in daily — it manages
+        my tasks, remembers across sessions, and runs scheduled jobs. Built on
+        <a href="https://hermes-agent.nousresearch.com" target="_blank" rel="noopener">Hermes Agent</a>
+        (Nous Research) with custom skills, Cloudflare MCP, Google Drive MCP, and Mem0 memory.
+      </p>
+      <div class="meta">Ongoing · hermes-agent.nousresearch.com</div>
+    </AnimatedCard>
+
+    <AnimatedCard delay={0.04} client:visible>
+      <h3>Personal Knowledge Infrastructure</h3>
+      <p>
+        103-page wiki with RAG-powered search. Ingests AI conversation exports (Gemini, Claude,
+        ChatGPT, Grok), research notes, and project docs. Self-maintaining via automated
+        ingestion pipelines. Two-repo architecture: raw archives (immutable) plus an
+        LLM-maintained projection layer. This is how I think out loud at scale.
+      </p>
+      <div class="meta">Ongoing · vault + llm-wiki</div>
+    </AnimatedCard>
+
+    <AnimatedCard delay={0.08} client:visible>
+      <h3>Cloudflare-Powered Infrastructure</h3>
+      <p>
+        Workers, Pages, KV, D1 — building serverless infrastructure for AI agent workloads.
+        Edge-first, zero cold starts. This portfolio site runs on it. So do several
+        internal tooling pipelines. The goal: deploy anywhere, run everywhere, own your stack.
+      </p>
+      <div class="meta">2025 – present</div>
+    </AnimatedCard>
+
+    <AnimatedCard delay={0.12} client:visible>
+      <h3>Ansible Deployment Automation</h3>
+      <p>
+        Full playbook for packaging and deploying AI agent infrastructure. System deps,
+        config management, secrets, skills — reproducible and auditable. Because "it works
+        on my machine" isn't a deployment strategy.
+      </p>
+      <div class="meta">2025</div>
+    </AnimatedCard>
+
+    <AnimatedCard delay={0.16} client:visible>
+      <h3>Golden Bear</h3>
+      <p>
+        Founded, built, and sold. Full stack: product, sales, operations, everything.
+        Learned more in two years than the previous ten. The exit wasn't life-changing money —
+        it was life-changing clarity about what I want to build next.
+      </p>
+      <div class="meta">2022 – 2024</div>
+    </AnimatedCard>
   </div>
 
-  <div class="card">
-    <h3>Personal Knowledge Infrastructure</h3>
-    <p>88-page wiki with RAG-powered search. Ingests AI conversation exports, research notes, and project docs. Self-maintaining via automated pipelines.</p>
-    <div class="meta">Ongoing · vault + llm-wiki</div>
-  </div>
-
-  <div class="card">
-    <h3>Cloudflare-Powered Tooling</h3>
-    <p>Workers, Pages, KV, D1 — building serverless infrastructure for AI agent workloads. Edge-first, zero cold starts.</p>
-    <div class="meta">2025 – present</div>
-  </div>
-
-  <div class="card">
-    <h3>Ansible Deployment Automation</h3>
-    <p>Full playbook for packaging and deploying AI agent infrastructure. System deps, config management, secrets, skills — reproducible and auditable.</p>
-    <div class="meta">2025</div>
-  </div>
-
-  <p style="margin-top: 2rem; color: var(--text-muted); font-size: 0.85rem;">
-    More coming. This page updates as things ship.
-  </p>
+  <AnimatedSection client:visible>
+    <p class="muted-note">
+      More details on request. Some things are private until they're not.
+    </p>
+  </AnimatedSection>
 </BaseLayout>
