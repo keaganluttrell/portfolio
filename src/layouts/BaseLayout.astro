@@ -15,6 +15,29 @@ const {
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Keagan Luttrell",
+  jobTitle: "AI Systems Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "Bolt Farm Treehouse",
+  },
+  url: "https://keagan.ai",
+  sameAs: [
+    "https://github.com/keaganluttrell",
+    "https://linkedin.com/in/keaganluttrell",
+    "https://x.com/xkeaganluttrell",
+  ],
+  description: "AI Systems Engineer building agent-native infrastructure.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Nashville",
+    addressRegion: "TN",
+    addressCountry: "US",
+  },
+};
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -51,35 +74,12 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
     <title>{title}</title>
 
     <!-- JSON-LD Person schema -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        name: "Keagan Luttrell",
-        jobTitle: "AI Systems Engineer",
-        worksFor: {
-          "@type": "Organization",
-          name: "Bolt Farm Treehouse",
-        },
-        url: "https://keagan.ai",
-        sameAs: [
-          "https://github.com/keaganluttrell",
-          "https://x.com/xkeaganluttrell",
-        ],
-        description: "AI Systems Engineer building agent-native infrastructure.",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Nashville",
-          addressRegion: "TN",
-          addressCountry: "US",
-        },
-      })}
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
 
-    <header>
+    <header class="site-header">
       <div class="inner">
         <AnimatedNav activePath={Astro.url.pathname} />
       </div>
@@ -91,10 +91,15 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
       </div>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <div class="inner">
-        <p>Keagan Luttrell</p>
-        <p>Nashville, TN</p>
+        <p>Keagan Luttrell / Nashville, TN</p>
+        <nav aria-label="Social links" class="footer-links">
+          <a href="https://github.com/keaganluttrell" target="_blank" rel="noopener">github</a>
+          <a href="https://linkedin.com/in/keaganluttrell" target="_blank" rel="noopener">linkedin</a>
+          <a href="https://x.com/xkeaganluttrell" target="_blank" rel="noopener">x</a>
+          <a href="mailto:keaganluttrell7@gmail.com">email</a>
+        </nav>
       </div>
     </footer>
   </body>

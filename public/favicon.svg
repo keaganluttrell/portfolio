@@ -1,23 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Keagan Luttrell coin mark">
   <defs>
-    <linearGradient id="coin" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f2d48a"/>
-      <stop offset="50%" stop-color="#d4a843"/>
-      <stop offset="100%" stop-color="#9f7625"/>
+    <linearGradient id="coin" x1="5" y1="4" x2="27" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff1b8"/>
+      <stop offset="0.32" stop-color="#f2d48a"/>
+      <stop offset="0.62" stop-color="#d4a843"/>
+      <stop offset="1" stop-color="#8b611b"/>
     </linearGradient>
-    <linearGradient id="coinEdge" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f2d48a" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#9f7625" stop-opacity="0.3"/>
+    <linearGradient id="edge" x1="7" y1="6" x2="25" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff5c8"/>
+      <stop offset="0.52" stop-color="#c08b2d"/>
+      <stop offset="1" stop-color="#6f4613"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="0.6" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <radialGradient id="innerGlow" cx="35%" cy="28%" r="70%">
+      <stop offset="0" stop-color="#fff4bf" stop-opacity="0.55"/>
+      <stop offset="0.48" stop-color="#f2d48a" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#6f4613" stop-opacity="0.32"/>
+    </radialGradient>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.38"/>
     </filter>
   </defs>
-  <circle cx="16" cy="16" r="14" fill="url(#coin)" stroke="url(#coinEdge)" stroke-width="0.5"/>
-  <circle cx="16" cy="16" r="11" fill="none" stroke="#f2d48a" stroke-width="0.4" opacity="0.5"/>
-  <circle cx="13.5" cy="13.5" r="4" fill="#0a1628" opacity="0.12"/>
+
+  <circle cx="16" cy="16" r="15" fill="#07111f"/>
+  <circle cx="16" cy="16" r="14" fill="url(#coin)" filter="url(#shadow)"/>
+
+  <g opacity="0.55" stroke="#fff1b8" stroke-width="1" stroke-linecap="round">
+    <path d="M16 2.8v3.1M16 26.1v3.1M2.8 16h3.1M26.1 16h3.1M6.7 6.7l2.2 2.2M23.1 23.1l2.2 2.2M25.3 6.7l-2.2 2.2M8.9 23.1l-2.2 2.2"/>
+  </g>
+
+  <circle cx="16" cy="16" r="11.3" fill="url(#innerGlow)" stroke="url(#edge)" stroke-width="1.3"/>
+  <circle cx="16" cy="16" r="8.35" fill="none" stroke="#7b5018" stroke-opacity="0.34" stroke-width="0.8"/>
+
+  <path d="M11.6 9.7h2.75v5.05l4.1-5.05h3.15l-4.48 5.24 4.76 7.36h-3.2l-3.35-5.33-.98 1.13v4.2H11.6z" fill="#07111f" opacity="0.9"/>
+  <path d="M11.6 9.15h2.75v5.05l4.1-5.05h3.15l-4.48 5.24 4.76 7.36h-3.2l-3.35-5.33-.98 1.13v4.2H11.6z" fill="#fff4bf" opacity="0.22"/>
 </svg>
