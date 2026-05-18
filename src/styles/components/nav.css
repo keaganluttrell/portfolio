@@ -92,7 +92,8 @@ nav,
 
 .nav-link {
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-caption);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
   color: var(--color-text);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-standard);
