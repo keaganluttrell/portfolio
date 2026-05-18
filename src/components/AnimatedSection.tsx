@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
+import { motionTransitions, motionVariants, viewportOnce } from '../lib/motion';
 
 type AnimatedSectionProps = {
   children: ReactNode;
@@ -13,10 +14,11 @@ export default function AnimatedSection({ children, className, delay = 0 }: Anim
   return (
     <motion.section
       className={className}
-      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.22 }}
-      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1], delay }}
+      initial={reduceMotion ? false : 'hidden'}
+      whileInView={reduceMotion ? undefined : 'show'}
+      variants={motionVariants.slideUp}
+      viewport={viewportOnce}
+      transition={{ ...motionTransitions.normal, delay }}
     >
       {children}
     </motion.section>

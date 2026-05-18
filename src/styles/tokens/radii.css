@@ -1,0 +1,8 @@
+:root {
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  --radius-organic: 28% 72% 70% 30% / 30% 34% 66% 70%;
+}

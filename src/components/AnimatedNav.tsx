@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion';
+import { motionTransitions, motionVariants, navStagger } from '../lib/motion';
 
 type AnimatedNavProps = {
   activePath: string;
@@ -28,7 +29,7 @@ export default function AnimatedNav({ activePath }: AnimatedNavProps) {
         aria-label="Keagan Luttrell home"
         whileHover={reduceMotion ? undefined : { scale: 1.06, rotate: -2 }}
         whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-        transition={{ duration: 0.18 }}
+        transition={motionTransitions.fast}
       >
         <span className="logo-text">kl</span>
       </motion.a>
@@ -43,15 +44,16 @@ export default function AnimatedNav({ activePath }: AnimatedNavProps) {
               href={link.href}
               className="nav-link"
               aria-current={active ? 'page' : undefined}
-              initial={reduceMotion ? false : { opacity: 0, y: -6 }}
-              animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: 0.03 * index }}
+              initial={reduceMotion ? false : 'hidden'}
+              animate={reduceMotion ? undefined : 'show'}
+              variants={motionVariants.navItem}
+              transition={{ ...motionTransitions.fast, delay: navStagger * index }}
             >
               {active && !reduceMotion ? (
                 <motion.span
                   className="nav-active-pill"
                   layoutId="nav-active-pill"
-                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                  transition={motionTransitions.normal}
                 />
               ) : active ? (
                 <span className="nav-active-pill" />

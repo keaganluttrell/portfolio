@@ -1,0 +1,9 @@
+:root {
+  --shadow-sm: 0 0.25rem 0.75rem rgb(0 0 0 / 18%);
+  --shadow-md: 0 0.75rem 2rem rgb(0 0 0 / 22%);
+  --shadow-lg: 0 1.125rem 3.75rem rgb(0 0 0 / 26%);
+  --shadow-xl: 0 1.5rem 5rem rgb(0 0 0 / 32%);
+  --shadow-gold-sm: 0 0 0 0.3125rem var(--color-accent-dim), 0 0.75rem 2.125rem rgb(212 168 67 / 16%);
+  --shadow-gold-md: 0 0 5rem rgb(212 168 67 / 8%);
+  --shadow-inset-gold: inset 0 0 1.375rem rgb(212 168 67 / 6%);
+}

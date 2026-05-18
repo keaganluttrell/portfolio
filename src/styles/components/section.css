@@ -1,0 +1,94 @@
+.hero {
+  margin-bottom: var(--space-12);
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  right: calc(var(--space-18) * -1);
+  top: calc(var(--space-5) * -1);
+  z-index: -1;
+  width: clamp(var(--size-hero-orb-min), 22vw, var(--size-hero-orb-max));
+  aspect-ratio: 1;
+  border: var(--space-px) solid var(--color-hero-border);
+  border-radius: var(--radius-organic);
+  background:
+    linear-gradient(135deg, var(--color-accent-dim), transparent 48%),
+    radial-gradient(circle at 35% 30%, var(--color-hero-glow), transparent 55%);
+  box-shadow: var(--shadow-gold-md);
+  opacity: 0.58;
+}
+
+.tagline {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  color: var(--color-accent);
+  margin-bottom: var(--space-10);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.section-label {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-overline);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-overline);
+  color: var(--color-accent);
+  margin: var(--space-10) var(--space-0) var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.section-label::before {
+  content: '';
+  width: var(--space-6);
+  height: var(--space-px);
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+}
+
+.connect-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-hit-target);
+  min-width: var(--size-link-target);
+  justify-content: center;
+  position: relative;
+}
+
+.connect-links a::after {
+  content: '';
+  position: absolute;
+  left: var(--space-0);
+  right: var(--space-0);
+  bottom: calc(var(--space-1) * -1);
+  height: var(--space-px);
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.connect-links a:hover {
+  text-decoration: none;
+}
+
+.connect-links a:hover::after,
+.connect-links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.muted-note {
+  margin-top: var(--space-8);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-body-sm);
+}
+
+@media (max-width: 640px) {
+  .hero::after {
+    right: calc(var(--space-4) * -1);
+    top: var(--space-0);
+    width: var(--size-hero-orb-mobile);
+    opacity: 0.28;
+  }
+}

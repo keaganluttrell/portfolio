@@ -1,0 +1,59 @@
+.card-grid,
+.timeline {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.card {
+  background:
+    linear-gradient(145deg, var(--color-surface-overlay), transparent),
+    var(--color-surface-glass);
+  border: var(--space-px) solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: var(--space-0);
+  pointer-events: none;
+  background: radial-gradient(circle at 15% 0%, var(--color-accent-glow), transparent 55%);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  opacity: 1;
+}
+
+.card h3 {
+  margin: var(--space-0) var(--space-0) var(--space-1);
+  position: relative;
+}
+
+.card p {
+  margin: var(--space-0);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body);
+  position: relative;
+}
+
+.card .meta {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-caption);
+  color: var(--color-accent);
+  margin-top: var(--space-3);
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: var(--space-5);
+  }
+}

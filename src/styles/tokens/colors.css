@@ -1,0 +1,84 @@
+:root {
+  /* Navy scale */
+  --color-navy-50: #eef6ff;
+  --color-navy-100: #d8eaff;
+  --color-navy-200: #b8d8ff;
+  --color-navy-300: #89bcf5;
+  --color-navy-400: #5d99da;
+  --color-navy-500: #3b74b5;
+  --color-navy-600: #2f5f96;
+  --color-navy-700: #244a75;
+  --color-navy-800: #173457;
+  --color-navy-900: #0a1628;
+  --color-navy-950: #07111f;
+
+  /* Gold scale */
+  --color-gold-50: #fff9e6;
+  --color-gold-100: #fff1b8;
+  --color-gold-200: #f8df93;
+  --color-gold-300: #f2d48a;
+  --color-gold-400: #e2bd61;
+  --color-gold-500: #d4a843;
+  --color-gold-600: #bd8f31;
+  --color-gold-700: #9f7625;
+  --color-gold-800: #765518;
+  --color-gold-900: #4f380f;
+
+  /* Neutral / text scale */
+  --color-neutral-50: #f8f3ea;
+  --color-neutral-100: #efe7dc;
+  --color-neutral-200: #e8e0d4;
+  --color-neutral-300: #d8cbbb;
+  --color-neutral-400: #c7baaa;
+  --color-neutral-500: #aa9c8b;
+  --color-neutral-600: #948474;
+  --color-neutral-700: #6f6254;
+  --color-neutral-800: #4a4037;
+  --color-neutral-900: #2b2520;
+
+  /* Semantic surfaces */
+  --color-bg: var(--color-navy-900);
+  --color-bg-rgb: 10 22 40;
+  --color-bg-deep: var(--color-navy-950);
+  --color-surface: #112240;
+  --color-surface-rgb: 17 34 64;
+  --color-surface-2: #1a3a5c;
+  --color-surface-glass: rgb(var(--color-surface-rgb) / 76%);
+  --color-surface-overlay: rgb(255 255 255 / 3%);
+
+  /* Semantic text */
+  --color-text: var(--color-neutral-200);
+  --color-text-dim: var(--color-neutral-400);
+  --color-text-muted: var(--color-neutral-600);
+  --color-text-inverse: var(--color-navy-900);
+
+  /* Semantic brand */
+  --color-accent: var(--color-gold-500);
+  --color-accent-bright: var(--color-gold-300);
+  --color-accent-deep: var(--color-gold-700);
+  --color-accent-dim: rgb(212 168 67 / 10%);
+  --color-accent-glow: rgb(212 168 67 / 18%);
+  --color-accent-border: rgb(212 168 67 / 24%);
+  --color-accent-border-strong: rgb(242 212 138 / 58%);
+
+  /* Borders */
+  --color-border-subtle: rgb(30 58 95 / 74%);
+  --color-border: var(--color-navy-700);
+  --color-border-default: rgb(30 58 95 / 90%);
+  --color-border-strong: var(--color-navy-600);
+
+  /* Effects */
+  --color-grid-line: rgb(232 224 212 / 2.5%);
+  --color-highlight: rgb(255 255 255 / 42%);
+  --color-coin-line: rgb(10 22 40 / 24%);
+  --color-coin-glint: rgb(255 245 200 / 34%);
+  --color-text-highlight: rgb(255 244 191 / 28%);
+  --color-bg-glass-header: rgb(var(--color-bg-rgb) / 72%);
+  --color-bg-glass-footer: rgb(var(--color-bg-rgb) / 42%);
+  --color-bg-radial-gold: rgb(212 168 67 / 12%);
+  --color-bg-radial-navy: rgb(49 91 134 / 24%);
+  --color-coin-inset: rgb(242 212 138 / 34%);
+  --color-hero-border: rgb(212 168 67 / 12%);
+  --color-hero-glow: rgb(212 168 67 / 12%);
+}
+
