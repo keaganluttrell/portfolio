@@ -44,9 +44,6 @@ export default function AnimatedNav({ activePath }: AnimatedNavProps) {
               href={link.href}
               className="nav-link"
               aria-current={active ? 'page' : undefined}
-              initial={reduceMotion ? false : 'hidden'}
-              animate={reduceMotion ? undefined : 'show'}
-              variants={motionVariants.navItem}
               transition={{ ...motionTransitions.fast, delay: navStagger * index }}
             >
               {active && !reduceMotion ? (

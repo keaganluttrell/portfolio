@@ -36,8 +36,8 @@ export const motionVariants = {
     show: { opacity: 1, scale: 1 },
   },
   navItem: {
-    hidden: { opacity: 0, y: -8 },
-    show: { opacity: 1, y: 0 },
+    hidden: { y: -8 },
+    show: { y: 0 },
   },
 } satisfies Record<string, Variants>;
 
