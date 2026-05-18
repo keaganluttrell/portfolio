@@ -1,36 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Keagan Luttrell coin mark">
   <defs>
-    <linearGradient id="coin" x1="5" y1="4" x2="27" y2="28" gradientUnits="userSpaceOnUse">
+    <linearGradient id="coin" x1="4" y1="3" x2="28" y2="29" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#fff1b8"/>
       <stop offset="0.32" stop-color="#f2d48a"/>
       <stop offset="0.62" stop-color="#d4a843"/>
       <stop offset="1" stop-color="#8b611b"/>
     </linearGradient>
-    <linearGradient id="edge" x1="7" y1="6" x2="25" y2="26" gradientUnits="userSpaceOnUse">
+    <linearGradient id="edge" x1="6" y1="5" x2="26" y2="27" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#fff5c8"/>
       <stop offset="0.52" stop-color="#c08b2d"/>
       <stop offset="1" stop-color="#6f4613"/>
     </linearGradient>
-    <radialGradient id="innerGlow" cx="35%" cy="28%" r="70%">
-      <stop offset="0" stop-color="#fff4bf" stop-opacity="0.55"/>
-      <stop offset="0.48" stop-color="#f2d48a" stop-opacity="0.16"/>
-      <stop offset="1" stop-color="#6f4613" stop-opacity="0.32"/>
+    <radialGradient id="innerGlow" cx="38%" cy="30%" r="68%">
+      <stop offset="0" stop-color="#fff4bf" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#f2d48a" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#6f4613" stop-opacity="0.28"/>
     </radialGradient>
     <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
       <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.38"/>
     </filter>
   </defs>
 
+  <!-- Outer ring on navy -->
   <circle cx="16" cy="16" r="15" fill="#07111f"/>
   <circle cx="16" cy="16" r="14" fill="url(#coin)" filter="url(#shadow)"/>
 
-  <g opacity="0.55" stroke="#fff1b8" stroke-width="1" stroke-linecap="round">
-    <path d="M16 2.8v3.1M16 26.1v3.1M2.8 16h3.1M26.1 16h3.1M6.7 6.7l2.2 2.2M23.1 23.1l2.2 2.2M25.3 6.7l-2.2 2.2M8.9 23.1l-2.2 2.2"/>
+  <!-- Rim tick marks -->
+  <g opacity="0.5" stroke="#fff1b8" stroke-width="1" stroke-linecap="round">
+    <path d="M16 2.6v3.2M16 26.2v3.2M2.6 16h3.2M26.2 16h3.2M6.3 6.3l2.3 2.3M23.4 23.4l2.3 2.3M25.7 6.3l-2.3 2.3M8.6 23.4l-2.3 2.3"/>
   </g>
 
-  <circle cx="16" cy="16" r="11.3" fill="url(#innerGlow)" stroke="url(#edge)" stroke-width="1.3"/>
-  <circle cx="16" cy="16" r="8.35" fill="none" stroke="#7b5018" stroke-opacity="0.34" stroke-width="0.8"/>
+  <!-- Inner ring -->
+  <circle cx="16" cy="16" r="11.5" fill="url(#innerGlow)" stroke="url(#edge)" stroke-width="1.2"/>
+  <circle cx="16" cy="16" r="8.5" fill="none" stroke="#7b5018" stroke-opacity="0.3" stroke-width="0.7"/>
 
-  <path d="M11.6 9.7h2.75v5.05l4.1-5.05h3.15l-4.48 5.24 4.76 7.36h-3.2l-3.35-5.33-.98 1.13v4.2H11.6z" fill="#07111f" opacity="0.9"/>
-  <path d="M11.6 9.15h2.75v5.05l4.1-5.05h3.15l-4.48 5.24 4.76 7.36h-3.2l-3.35-5.33-.98 1.13v4.2H11.6z" fill="#fff4bf" opacity="0.22"/>
+  <!-- "kl" monogram — bold, readable at 16x16 -->
+  <text x="16" y="17.5" text-anchor="middle" dominant-baseline="middle" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-weight="700" font-size="7.5" fill="#07111f" opacity="0.88">kl</text>
+  <text x="16" y="17.2" text-anchor="middle" dominant-baseline="middle" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" font-weight="700" font-size="7.5" fill="#fff4bf" opacity="0.18">kl</text>
 </svg>
