@@ -27,6 +27,11 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
     <meta name="theme-color" content="#0a1628" />
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -74,9 +79,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
 
-    <header class="site-header">
+    <header>
       <div class="inner">
-        <AnimatedNav activePath={Astro.url.pathname} client:load />
+        <AnimatedNav activePath={Astro.url.pathname} />
       </div>
     </header>
 
@@ -86,7 +91,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
       </div>
     </main>
 
-    <footer class="site-footer">
+    <footer>
       <div class="inner">
         <p>Keagan Luttrell</p>
         <p>Nashville, TN</p>
