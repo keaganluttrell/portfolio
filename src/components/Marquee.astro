@@ -1,0 +1,29 @@
+---
+/**
+ * Infinite skills marquee — pure CSS.
+ * Items prop: array of strings to display in a continuous loop.
+ *
+ * Pause on hover. Disabled under prefers-reduced-motion (static display).
+ */
+interface Props {
+  items: string[];
+  duration?: number; // animation duration in seconds
+}
+
+const { items, duration = 28 } = Astro.props;
+---
+
+<div class="marquee" aria-label="Skills">
+  <div class="marquee-track" style={`--duration: ${duration}s`}>
+    <ul class="marquee-row">
+      {items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+    <ul class="marquee-row" aria-hidden="true">
+      {items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+</div>

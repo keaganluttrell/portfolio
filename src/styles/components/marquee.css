@@ -1,0 +1,92 @@
+/* Infinite skills marquee — pure CSS, dual-row seamless loop.
+ *
+ * Pattern: two identical rows side-by-side, each containing the full item set.
+ * Gap is applied per-item (via padding-right on <li>) rather than flex gap on
+ * the track. This keeps rows flush and lets translateX(-50%) loop seamlessly.
+ */
+
+.marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  margin: var(--space-8) 0;
+  /* Soft fade at the edges */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll var(--duration, 28s) linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-row {
+  flex-shrink: 0;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.marquee-row li {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-dim);
+  white-space: nowrap;
+  position: relative;
+  padding-right: 2.5rem;
+  margin: 0;
+}
+
+.marquee-row li::after {
+  content: '·';
+  position: absolute;
+  right: 1.1rem;
+  color: var(--color-accent);
+  opacity: 0.6;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .marquee-row[aria-hidden='true'] {
+    display: none;
+  }
+  .marquee {
+    overflow-x: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}

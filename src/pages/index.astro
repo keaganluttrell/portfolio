@@ -5,12 +5,31 @@ import AnimatedReveal from '../components/AnimatedReveal';
 import AnimatedCard from '../components/AnimatedCard';
 import TextReveal from '../components/TextReveal';
 import HeroIntro from '../components/HeroIntro';
+import CursorSpotlight from '../components/CursorSpotlight';
+import MagneticButton from '../components/MagneticButton';
+import Marquee from '../components/Marquee.astro';
+
+const skills = [
+  'AI Systems',
+  'Agent Infrastructure',
+  'Memory Systems',
+  'Multi-Agent Orchestration',
+  'MCP',
+  'SRE',
+  'React',
+  'TypeScript',
+  'Python',
+  'Cloudflare',
+  'Astro',
+  'Systems Thinking',
+];
 ---
 <BaseLayout
   title="Keagan Luttrell"
   description="AI Systems Engineer. Building agent-native infrastructure. Army EOD → SRE → Founder → AI."
 >
   <section class="hero">
+    <CursorSpotlight client:load />
     <HeroIntro client:load />
     <TextReveal text="Keagan Luttrell" as="h1" syncWithIntro client:load />
     <p class="tagline">AI Systems Engineer · Nashville, TN</p>
@@ -34,6 +53,8 @@ import HeroIntro from '../components/HeroIntro';
       If there's friction, I remove it. If there's no tool for the job, I make one.
     </p>
   </section>
+
+  <Marquee items={skills} />
 
   <AnimatedReveal client:visible>
     <div class="section-label">Now</div>
@@ -62,10 +83,13 @@ import HeroIntro from '../components/HeroIntro';
   <AnimatedSection client:visible>
     <div class="section-label">Connect</div>
     <p class="connect-links">
-      <a href="https://github.com/keaganluttrell" target="_blank" rel="noopener">github</a> ·
-      <a href="https://linkedin.com/in/keaganluttrell" target="_blank" rel="noopener">linkedin</a> ·
-      <a href="https://x.com/xkeaganluttrell" target="_blank" rel="noopener">x</a> ·
-      <a href="mailto:keaganluttrell7@gmail.com">email</a>
+      <MagneticButton href="https://github.com/keaganluttrell" target="_blank" rel="noopener" client:visible>github</MagneticButton>
+      <span aria-hidden="true"> · </span>
+      <MagneticButton href="https://linkedin.com/in/keaganluttrell" target="_blank" rel="noopener" client:visible>linkedin</MagneticButton>
+      <span aria-hidden="true"> · </span>
+      <MagneticButton href="https://x.com/xkeaganluttrell" target="_blank" rel="noopener" client:visible>x</MagneticButton>
+      <span aria-hidden="true"> · </span>
+      <MagneticButton href="mailto:keaganluttrell7@gmail.com" client:visible>email</MagneticButton>
     </p>
   </AnimatedSection>
 </BaseLayout>

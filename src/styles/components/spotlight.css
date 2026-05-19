@@ -1,0 +1,44 @@
+/* Cursor-following spotlight for the hero.
+ * Translates with the cursor; the gradient itself is centered on the element origin.
+ */
+
+.cursor-spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  z-index: 1;
+  /* Center the gradient on the spotlight origin so x/y motion = cursor position. */
+  margin-top: -300px;
+  margin-left: -300px;
+  background: radial-gradient(
+    circle,
+    rgba(212, 168, 67, 0.08) 0%,
+    rgba(212, 168, 67, 0.04) 25%,
+    transparent 60%
+  );
+  will-change: transform;
+}
+
+/* Cursor text label — premium pattern: small pill near cursor when hovering tagged elements. */
+.cursor-label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+  font-family: var(--font-family-mono);
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  text-transform: lowercase;
+  white-space: nowrap;
+  box-shadow: var(--shadow-gold-sm);
+  will-change: transform, opacity;
+}
