@@ -93,7 +93,12 @@ export default function AnimatedNav({ activePath }: AnimatedNavProps) {
   }, [mobileOpen]);
 
   return (
-    <div className="site-nav-shell">
+    <motion.div
+      className="site-nav-shell"
+      initial={reduceMotion ? false : { opacity: 0, y: -16 }}
+      animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+    >
       <motion.a
         href="/"
         className="logo"
@@ -193,6 +198,6 @@ export default function AnimatedNav({ activePath }: AnimatedNavProps) {
           </motion.nav>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }

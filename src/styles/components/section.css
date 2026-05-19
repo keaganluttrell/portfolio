@@ -68,10 +68,23 @@
   margin: var(--space-10) var(--space-0) var(--space-4);
   display: inline-flex;
   align-items: center;
+}
+
+.section-label:not([data-num]) {
   gap: var(--space-3);
 }
 
-.section-label::before {
+/* Number prefix (e.g., "01 / ") — pulled from data-num attribute. */
+.section-label[data-num]::before {
+  content: attr(data-num) ' \2009/\2009 ';
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  white-space: pre;
+}
+
+/* Decorative gradient line for labels WITHOUT a number — preserves old style. */
+.section-label:not([data-num])::before {
   content: '';
   width: var(--space-6);
   height: var(--space-px);

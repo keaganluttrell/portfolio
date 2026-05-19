@@ -6,6 +6,17 @@
   z-index: 20;
   background: var(--color-bg-glass-header);
   backdrop-filter: blur(1.125rem);
+  transition:
+    backdrop-filter var(--duration-normal) var(--ease-standard),
+    background-color var(--duration-normal) var(--ease-standard),
+    border-color var(--duration-normal) var(--ease-standard);
+}
+
+/* When the hero has scrolled out of view, intensify the nav's presence. */
+.site-header[data-scrolled] {
+  backdrop-filter: blur(1.5rem);
+  background: var(--color-bg-glass-nav);
+  border-bottom-color: var(--color-accent-border);
 }
 
 @supports not (backdrop-filter: blur()) {

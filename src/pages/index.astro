@@ -57,7 +57,7 @@ const skills = [
   <Marquee items={skills} />
 
   <AnimatedReveal client:visible>
-    <div class="section-label">Now</div>
+    <div class="section-label" data-num="01">Now</div>
   </AnimatedReveal>
   <div class="card-grid">
     <AnimatedCard client:visible>
@@ -73,7 +73,7 @@ const skills = [
   </div>
 
   <AnimatedSection client:visible>
-    <div class="section-label">Writing</div>
+    <div class="section-label" data-num="02">Writing</div>
     <p>
       I publish notes on AI infrastructure, systems thinking, and the intersection of
       contemplative practice and engineering. <a href="/writing">Read the notes</a>.
@@ -81,7 +81,7 @@ const skills = [
   </AnimatedSection>
 
   <AnimatedSection client:visible>
-    <div class="section-label">Connect</div>
+    <div class="section-label" data-num="03">Connect</div>
     <p class="connect-links">
       <MagneticButton href="https://github.com/keaganluttrell" target="_blank" rel="noopener" client:visible>github</MagneticButton>
       <span aria-hidden="true"> · </span>

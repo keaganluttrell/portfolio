@@ -6,6 +6,7 @@
 @import './tokens/motion.css';
 @import './base/reset.css';
 @import './base/global.css';
+@import './base/view-transitions.css';
 @import './components/nav.css';
 @import './components/card.css';
 @import './components/section.css';

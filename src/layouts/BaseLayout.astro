@@ -1,7 +1,9 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import AnimatedNav from '../components/AnimatedNav';
 import LenisProvider from '../components/LenisProvider';
 import CursorLabel from '../components/CursorLabel';
+import StickyNavObserver from '../components/StickyNavObserver';
 import '../styles/index.css';
 
 interface Props {
@@ -76,17 +78,20 @@ const personSchema = {
 
     <title>{title}</title>
 
+    <ClientRouter />
+
     <!-- JSON-LD Person schema -->
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
 
-    <LenisProvider client:load />
-    <CursorLabel client:idle />
-    <div class="grain-overlay" aria-hidden="true"></div>
+    <LenisProvider client:load transition:persist />
+    <CursorLabel client:idle transition:persist />
+    <StickyNavObserver client:load />
+    <div class="grain-overlay" aria-hidden="true" transition:persist></div>
 
-    <header class="site-header">
+    <header class="site-header" transition:name="site-header">
       <div class="inner">
         <AnimatedNav activePath={Astro.url.pathname} />
       </div>
@@ -98,7 +103,7 @@ const personSchema = {
       </div>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" transition:name="site-footer">
       <div class="inner">
         <p>Keagan Luttrell / Nashville, TN</p>
         <nav aria-label="Social links" class="footer-links">
