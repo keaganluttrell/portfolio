@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform, useReducedMotion, type MotionValue } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { willHeroIntroFire } from './HeroIntro';
 
 type TextRevealProps = {
   text: string;
@@ -13,9 +14,14 @@ type TextRevealProps = {
   mode?: 'mount' | 'scroll';
   /**
    * Delay before mount animation starts (seconds). Only applies to mode='mount'.
-   * Use this to sync with hero intro sequence (~0.5s).
    */
   delay?: number;
+  /**
+   * If true, delays mount animation only when HeroIntro will fire this load.
+   * On repeat session loads (intro skipped), text appears immediately.
+   * Mutually exclusive with `delay`.
+   */
+  syncWithIntro?: boolean;
 };
 
 export default function TextReveal({
@@ -24,21 +30,29 @@ export default function TextReveal({
   as = 'h1',
   mode = 'mount',
   delay = 0,
+  syncWithIntro = false,
 }: TextRevealProps) {
   const reduceMotion = useReducedMotion();
   const words = text.split(' ');
 
-  // Static fallback for reduced motion
+  // Resolve effective delay: syncWithIntro adds 0.5s only if HeroIntro will fire.
+  const [effectiveDelay, setEffectiveDelay] = useState(delay);
+  useEffect(() => {
+    if (syncWithIntro) {
+      setEffectiveDelay(willHeroIntroFire() ? 0.5 : 0);
+    }
+  }, [syncWithIntro]);
+
   if (reduceMotion) {
     const Tag = as;
     return <Tag className={className}>{text}</Tag>;
   }
 
   if (mode === 'scroll') {
-    return <ScrollLinkedReveal text={text} words={words} className={className} as={as} />;
+    return <ScrollLinkedReveal words={words} className={className} as={as} />;
   }
 
-  return <MountReveal words={words} className={className} as={as} delay={delay} />;
+  return <MountReveal words={words} className={className} as={as} delay={effectiveDelay} />;
 }
 
 /* -------------------- Mount-time stagger reveal -------------------- */
@@ -93,7 +107,6 @@ function MountReveal({ words, className, as, delay }: MountRevealProps) {
 /* -------------------- Scroll-linked reveal -------------------- */
 
 type ScrollLinkedRevealProps = {
-  text: string;
   words: string[];
   className?: string;
   as: 'h1' | 'h2' | 'h3' | 'p';

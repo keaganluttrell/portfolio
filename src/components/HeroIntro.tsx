@@ -5,9 +5,10 @@ const SESSION_KEY = 'kl_hero_intro_seen';
 
 /**
  * Hero loading sequence — gold dot expands to a horizontal line, then fades.
- * Total duration: ~600ms. Fires once per session.
+ * Total duration: ~700ms. Fires once per session.
  *
- * Renders a fixed-positioned overlay that ignites the hero text reveal.
+ * Renders an absolutely-positioned overlay inside the hero section
+ * (parent must have position: relative and class .hero).
  */
 export default function HeroIntro() {
   const reduceMotion = useReducedMotion();
@@ -16,7 +17,6 @@ export default function HeroIntro() {
   useEffect(() => {
     if (reduceMotion) return;
 
-    // Only fire once per session
     try {
       if (sessionStorage.getItem(SESSION_KEY) === '1') return;
       sessionStorage.setItem(SESSION_KEY, '1');
@@ -36,31 +36,14 @@ export default function HeroIntro() {
       {show && (
         <motion.div
           aria-hidden="true"
-          style={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            zIndex: 50,
-            pointerEvents: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '2px',
-          }}
+          className="hero-intro"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
           <motion.span
-            style={{
-              display: 'block',
-              height: '2px',
-              borderRadius: '999px',
-              background: 'linear-gradient(90deg, transparent, var(--color-accent-bright), var(--color-accent), var(--color-accent-bright), transparent)',
-              boxShadow: '0 0 12px var(--color-accent-glow)',
-            }}
+            className="hero-intro-line"
             initial={{ width: 8 }}
             animate={{ width: ['8px', '120px', '120px'] }}
             exit={{ opacity: 0, width: '180px' }}
@@ -74,4 +57,20 @@ export default function HeroIntro() {
       )}
     </AnimatePresence>
   );
+}
+
+/**
+ * Sync helper: returns whether the hero intro will fire this load.
+ * Use this to decide whether to delay subsequent animations.
+ *
+ * Note: must be called AFTER mount (sessionStorage isn't available SSR-side).
+ */
+export function willHeroIntroFire(): boolean {
+  if (typeof window === 'undefined') return false;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+  try {
+    return sessionStorage.getItem(SESSION_KEY) !== '1';
+  } catch {
+    return true;
+  }
 }

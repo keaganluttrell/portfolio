@@ -4,13 +4,15 @@ import AnimatedSection from '../components/AnimatedSection';
 import AnimatedReveal from '../components/AnimatedReveal';
 import AnimatedCard from '../components/AnimatedCard';
 import TextReveal from '../components/TextReveal';
+import HeroIntro from '../components/HeroIntro';
 ---
 <BaseLayout
   title="Keagan Luttrell"
   description="AI Systems Engineer. Building agent-native infrastructure. Army EOD → SRE → Founder → AI."
 >
   <section class="hero">
-    <TextReveal text="Keagan Luttrell" as="h1" delay={0.5} client:load />
+    <HeroIntro client:load />
+    <TextReveal text="Keagan Luttrell" as="h1" syncWithIntro client:load />
     <p class="tagline">AI Systems Engineer · Nashville, TN</p>
 
     <p>

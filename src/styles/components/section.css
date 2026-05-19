@@ -3,6 +3,37 @@
   position: relative;
 }
 
+/* Hero intro overlay — gold dot expands to a line, sits in the H1 area. */
+.hero-intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  /* Align with the H1 baseline area (h1 font-size is clamp(2rem, 5vw, 3.5rem),
+     line-height 1.05 -> roughly 2-3.5rem tall. Place the line ~1.5rem from top
+     so it lives in the top half of the H1 row.) */
+  height: clamp(2rem, 5vw, 3.5rem);
+  padding-top: 0.5rem;
+}
+
+.hero-intro-line {
+  display: block;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent-bright),
+    var(--color-accent),
+    var(--color-accent-bright),
+    transparent
+  );
+  box-shadow: 0 0 12px var(--color-accent-glow);
+}
+
 .hero::after {
   content: '';
   position: absolute;
