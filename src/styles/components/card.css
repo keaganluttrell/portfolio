@@ -15,6 +15,9 @@
   box-shadow: var(--shadow-lg);
   position: relative;
   overflow: hidden;
+  transition:
+    border-color var(--duration-normal) var(--ease-standard),
+    box-shadow var(--duration-normal) var(--ease-standard);
 }
 
 .card::before {
@@ -30,6 +33,11 @@
 .card:hover::before,
 .card:focus-within::before {
   opacity: 1;
+}
+
+.card:hover {
+  border-color: var(--color-accent-border);
+  box-shadow: var(--shadow-xl);
 }
 
 .card h3 {

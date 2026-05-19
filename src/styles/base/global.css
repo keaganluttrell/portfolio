@@ -1,9 +1,6 @@
 body {
   font-family: var(--font-family-body);
-  background:
-    radial-gradient(circle at 15% 0%, var(--color-bg-radial-gold), transparent 30rem),
-    radial-gradient(circle at 85% 10%, var(--color-bg-radial-navy), transparent 28rem),
-    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-deep) 100%);
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-deep) 100%);
   color: var(--color-text);
   line-height: var(--line-height-body);
   display: flex;
@@ -69,6 +66,13 @@ h2::before {
   width: var(--space-12);
   height: var(--space-px);
   background: linear-gradient(90deg, var(--color-accent), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+h2[data-visible]::before {
+  transform: scaleX(1);
 }
 
 h3 {
@@ -95,7 +99,25 @@ a {
 
 a:hover {
   color: var(--color-accent);
-  text-decoration: underline;
+  text-decoration: none; /* we use ::after for the animated underline */
+}
+
+/* Animated underline on body-text links (not nav, not buttons, not connect-links). */
+p a:not(.nav-link):not(.connect-links a)::after,
+li a:not(.nav-link)::after {
+  content: '';
+  display: block;
+  height: var(--space-px);
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-normal) var(--ease-decelerate);
+  margin-top: 1px;
+}
+
+p a:not(.nav-link):not(.connect-links a):hover::after,
+li a:not(.nav-link):hover::after {
+  transform: scaleX(1);
 }
 
 a:focus-visible {

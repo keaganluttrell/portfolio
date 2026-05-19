@@ -33,9 +33,9 @@ export default function AnimatedSection({ children, className, delay = 0 }: Anim
       className={className}
       initial={reduceMotion ? false : 'hidden'}
       whileInView={reduceMotion ? undefined : 'show'}
-      variants={motionVariants.slideUp}
+      variants={motionVariants.clipUp}
       viewport={isMobile ? viewportOnceMobile : viewportOnce}
-      transition={{ ...motionTransitions.normal, delay }}
+      transition={{ ...motionTransitions.reveal, delay }}
     >
       {children}
     </motion.section>

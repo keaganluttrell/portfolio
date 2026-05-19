@@ -1,0 +1,62 @@
+/* Background gradient mesh — two slow-drifting radial orbs.
+ * Lives in a fixed layer behind all content so it can be animated
+ * independently of the body background.
+ */
+
+.bg-drift {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-drift-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+  animation: drift 30s ease-in-out infinite alternate;
+}
+
+.bg-drift-orb--gold {
+  width: 50vw;
+  height: 50vw;
+  max-width: 800px;
+  max-height: 800px;
+  top: -10%;
+  left: 5%;
+  background: var(--color-bg-radial-gold);
+  opacity: 0.5;
+}
+
+.bg-drift-orb--navy {
+  width: 45vw;
+  height: 45vw;
+  max-width: 700px;
+  max-height: 700px;
+  top: 5%;
+  right: 10%;
+  background: var(--color-bg-radial-navy);
+  opacity: 0.6;
+  animation-direction: reverse;
+  animation-duration: 35s;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, 20px);
+  }
+  100% {
+    transform: translate(-20px, 15px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-drift-orb {
+    animation: none;
+  }
+}

@@ -6,6 +6,7 @@
 @import './tokens/motion.css';
 @import './base/reset.css';
 @import './base/global.css';
+@import './base/drift.css';
 @import './base/view-transitions.css';
 @import './components/nav.css';
 @import './components/card.css';
@@ -13,4 +14,6 @@
 @import './components/footer.css';
 @import './components/grain.css';
 @import './components/spotlight.css';
+@import './components/status-pill.css';
+@import './components/easter-egg.css';
 @import './components/marquee.css';

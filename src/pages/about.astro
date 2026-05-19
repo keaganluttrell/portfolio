@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCard from '../components/AnimatedCard';
+import MagneticButton from '../components/MagneticButton';
 ---
 <BaseLayout
   title="About — Keagan Luttrell"
@@ -134,10 +135,13 @@ import AnimatedCard from '../components/AnimatedCard';
   <AnimatedSection client:visible>
     <div class="section-label" data-num="01">Connect</div>
     <p class="connect-links">
-      <a href="https://github.com/keaganluttrell" target="_blank" rel="noopener">github</a> ·
-      <a href="https://linkedin.com/in/keaganluttrell" target="_blank" rel="noopener">linkedin</a> ·
-      <a href="https://x.com/xkeaganluttrell" target="_blank" rel="noopener">x</a> ·
-      <a href="mailto:keaganluttrell7@gmail.com">email</a>
+      <MagneticButton href="https://github.com/keaganluttrell" target="_blank" rel="noopener" client:visible>github</MagneticButton>
+      <span aria-hidden="true"> · </span>
+      <MagneticButton href="https://linkedin.com/in/keaganluttrell" target="_blank" rel="noopener" client:visible>linkedin</MagneticButton>
+      <span aria-hidden="true"> · </span>
+      <MagneticButton href="https://x.com/xkeaganluttrell" target="_blank" rel="noopener" client:visible>x</MagneticButton>
+      <span aria-hidden="true"> · </span>
+      <MagneticButton href="mailto:keaganluttrell7@gmail.com" client:visible>email</MagneticButton>
     </p>
   </AnimatedSection>
 </BaseLayout>

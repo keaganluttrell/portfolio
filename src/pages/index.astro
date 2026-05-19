@@ -9,6 +9,8 @@ import CursorSpotlight from '../components/CursorSpotlight';
 import MagneticButton from '../components/MagneticButton';
 import Marquee from '../components/Marquee.astro';
 
+import StatusPill from '../components/StatusPill.astro';
+
 const skills = [
   'AI Systems',
   'Agent Infrastructure',
@@ -31,6 +33,7 @@ const skills = [
   <section class="hero">
     <CursorSpotlight client:load />
     <HeroIntro client:load />
+    <StatusPill status="Currently: Director-level AI roles" />
     <TextReveal text="Keagan Luttrell" as="h1" syncWithIntro client:load />
     <p class="tagline">AI Systems Engineer · Nashville, TN</p>
 
