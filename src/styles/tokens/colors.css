@@ -73,6 +73,7 @@
   --color-coin-glint: rgb(255 245 200 / 34%);
   --color-text-highlight: rgb(255 244 191 / 28%);
   --color-bg-glass-header: rgb(var(--color-bg-rgb) / 72%);
+  --color-bg-glass-nav: rgb(var(--color-bg-rgb) / 88%);
   --color-bg-glass-footer: rgb(var(--color-bg-rgb) / 42%);
   --color-bg-radial-gold: rgb(212 168 67 / 12%);
   --color-bg-radial-navy: rgb(49 91 134 / 24%);

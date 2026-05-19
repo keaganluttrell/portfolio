@@ -46,4 +46,9 @@ export const viewportOnce = {
   amount: 0.24,
 } as const;
 
+export const viewportOnceMobile = {
+  once: true,
+  amount: 0.08,
+} as const;
+
 export const navStagger = 0.03;

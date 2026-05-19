@@ -92,3 +92,9 @@
     opacity: 0.28;
   }
 }
+
+@media (max-width: 480px) {
+  .hero::after {
+    display: none;
+  }
+}

@@ -147,7 +147,26 @@ li {
 }
 
 @media (max-width: 640px) {
+  body {
+    line-height: var(--line-height-compact);
+  }
+
+  body::before {
+    background-size: calc(var(--size-grid) * 2) calc(var(--size-grid) * 2);
+  }
+
+  .container {
+    padding: var(--space-0) var(--space-4);
+  }
+
   main {
     padding: var(--space-12) var(--space-0) var(--space-16);
+  }
+
+  p,
+  li {
+    font-size: var(--font-size-body-sm);
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 }
