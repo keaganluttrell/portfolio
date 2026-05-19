@@ -1,5 +1,7 @@
 ---
 import AnimatedNav from '../components/AnimatedNav';
+import LenisProvider from '../components/LenisProvider';
+import HeroIntro from '../components/HeroIntro';
 import '../styles/index.css';
 
 interface Props {
@@ -79,6 +81,10 @@ const personSchema = {
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
+
+    <LenisProvider client:load />
+    <HeroIntro client:load />
+    <div class="grain-overlay" aria-hidden="true"></div>
 
     <header class="site-header">
       <div class="inner">

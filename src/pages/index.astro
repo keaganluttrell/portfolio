@@ -1,14 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnimatedSection from '../components/AnimatedSection';
+import AnimatedReveal from '../components/AnimatedReveal';
 import AnimatedCard from '../components/AnimatedCard';
+import TextReveal from '../components/TextReveal';
 ---
 <BaseLayout
   title="Keagan Luttrell"
   description="AI Systems Engineer. Building agent-native infrastructure. Army EOD → SRE → Founder → AI."
 >
-  <AnimatedSection className="hero" client:load>
-    <h1>Keagan Luttrell</h1>
+  <section class="hero">
+    <TextReveal text="Keagan Luttrell" as="h1" delay={0.5} client:load />
     <p class="tagline">AI Systems Engineer · Nashville, TN</p>
 
     <p>
@@ -29,11 +31,11 @@ import AnimatedCard from '../components/AnimatedCard';
       follow-through to build them — not because of work ethic, but because I'm compelled.
       If there's friction, I remove it. If there's no tool for the job, I make one.
     </p>
-  </AnimatedSection>
+  </section>
 
-  <AnimatedSection client:visible>
+  <AnimatedReveal client:visible>
     <div class="section-label">Now</div>
-  </AnimatedSection>
+  </AnimatedReveal>
   <div class="card-grid">
     <AnimatedCard client:visible>
       <h3>Building agent-native infrastructure</h3>
