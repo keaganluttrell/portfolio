@@ -1,0 +1,25 @@
+/* Directional reveal — pure CSS clip-path wipe.
+ * Applied via .reveal-up, .reveal-down, .reveal-left, .reveal-right.
+ * Uses --reveal-from custom property for the hidden state.
+ */
+
+[class^="reveal-"] {
+  animation: reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes reveal {
+  from {
+    clip-path: var(--reveal-from, inset(0 0 100% 0));
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [class^="reveal-"] {
+    animation: none;
+  }
+}

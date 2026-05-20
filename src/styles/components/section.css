@@ -1,144 +1,25 @@
-.hero {
-  margin-bottom: var(--space-12);
-  position: relative;
+/* Section reveal — pure CSS clip-path wipe entrance.
+ * Applied via .section-reveal class. Uses @keyframes for reliability
+ * across hydration boundaries. Respects prefers-reduced-motion.
+ */
+
+.section-reveal {
+  animation: section-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Hero intro overlay — gold dot expands to a line, sits in the H1 area. */
-.hero-intro {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-  /* Align with the H1 baseline area (h1 font-size is clamp(2rem, 5vw, 3.5rem),
-     line-height 1.05 -> roughly 2-3.5rem tall. Place the line ~1.5rem from top
-     so it lives in the top half of the H1 row.) */
-  height: clamp(2rem, 5vw, 3.5rem);
-  padding-top: 0.5rem;
-}
-
-.hero-intro-line {
-  display: block;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-accent-bright),
-    var(--color-accent),
-    var(--color-accent-bright),
-    transparent
-  );
-  box-shadow: 0 0 12px var(--color-accent-glow);
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  right: calc(var(--space-6) * -1);
-  top: calc(var(--space-4) * -1);
-  z-index: -1;
-  width: clamp(var(--size-hero-orb-min), 22vw, var(--size-hero-orb-max));
-  aspect-ratio: 1;
-  border: var(--space-px) solid var(--color-hero-border);
-  border-radius: var(--radius-organic);
-  background:
-    linear-gradient(135deg, var(--color-accent-dim), transparent 48%),
-    radial-gradient(circle at 35% 30%, var(--color-hero-glow), transparent 55%);
-  box-shadow: var(--shadow-gold-md);
-  opacity: 0.58;
-}
-
-.tagline {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-small);
-  color: var(--color-accent);
-  margin-bottom: var(--space-10);
-  letter-spacing: var(--letter-spacing-wide);
-}
-
-.section-label {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-overline);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-overline);
-  color: var(--color-accent);
-  margin: var(--space-10) var(--space-0) var(--space-4);
-  display: inline-flex;
-  align-items: center;
-}
-
-.section-label:not([data-num]) {
-  gap: var(--space-3);
-}
-
-/* Number prefix (e.g., "01 / ") — pulled from data-num attribute. */
-.section-label[data-num]::before {
-  content: attr(data-num) ' \2009/\2009 ';
-  color: var(--color-text-muted);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--letter-spacing-wide);
-  white-space: pre;
-}
-
-/* Decorative gradient line for labels WITHOUT a number — preserves old style. */
-.section-label:not([data-num])::before {
-  content: '';
-  width: var(--space-6);
-  height: var(--space-px);
-  background: linear-gradient(90deg, var(--color-accent), transparent);
-}
-
-.connect-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--size-hit-target);
-  min-width: var(--size-link-target);
-  justify-content: center;
-  position: relative;
-}
-
-.connect-links a::after {
-  content: '';
-  position: absolute;
-  left: var(--space-0);
-  right: var(--space-0);
-  bottom: calc(var(--space-1) * -1);
-  height: var(--space-px);
-  background: var(--color-accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--duration-normal) var(--ease-standard);
-}
-
-.connect-links a:hover {
-  text-decoration: none;
-}
-
-.connect-links a:hover::after,
-.connect-links a:focus-visible::after {
-  transform: scaleX(1);
-}
-
-.muted-note {
-  margin-top: var(--space-8);
-  color: var(--color-text-muted);
-  font-size: var(--font-size-body-sm);
-}
-
-@media (max-width: 640px) {
-  .hero::after {
-    right: calc(var(--space-4) * -1);
-    top: var(--space-0);
-    width: var(--size-hero-orb-mobile);
-    opacity: 0.28;
+@keyframes section-reveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
   }
 }
 
-@media (max-width: 480px) {
-  .hero::after {
-    display: none;
+@media (prefers-reduced-motion: reduce) {
+  .section-reveal {
+    animation: none;
   }
 }

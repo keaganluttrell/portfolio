@@ -1,7 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
-import { motionTransitions, motionVariants, viewportOnce, viewportOnceMobile } from '../lib/motion';
 
 type Direction = 'up' | 'down' | 'left' | 'right';
 
@@ -11,40 +8,18 @@ type AnimatedRevealProps = {
   delay?: number;
   direction?: Direction;
   as?: 'div' | 'section' | 'article' | 'header';
-  /**
-   * If true, animation plays on mount instead of on viewport intersection.
-   * Use for above-the-fold elements that are already in view on page load.
-   */
-  immediate?: boolean;
 };
 
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 640px)');
-    setIsMobile(mq.matches);
-
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
-
-  return isMobile;
-}
-
-const variantByDirection = {
-  up: motionVariants.clipUp,
-  down: motionVariants.clipDown,
-  left: motionVariants.clipLeft,
-  right: motionVariants.clipRight,
+const clipHidden = {
+  up: 'inset(0 0 100% 0)',
+  down: 'inset(100% 0 0 0)',
+  left: 'inset(0 100% 0 0)',
+  right: 'inset(0 0 0 100%)',
 } as const;
 
 /**
- * Clip-path scroll reveal — directional wipe into view.
- * The premium upgrade over basic fade/slide.
- *
- * Default direction is 'up' (reveals from bottom to top).
+ * Clip-path entrance reveal — directional wipe via CSS @keyframes.
+ * Pure CSS approach avoids Framer Motion hydration timing issues.
  */
 export default function AnimatedReveal({
   children,
@@ -52,33 +27,18 @@ export default function AnimatedReveal({
   delay = 0,
   direction = 'up',
   as = 'div',
-  immediate = false,
 }: AnimatedRevealProps) {
-  const reduceMotion = useReducedMotion();
-  const isMobile = useIsMobile();
-  const variants = variantByDirection[direction];
-
-  const MotionTag = motion[as];
-
-  const triggerProps = immediate
-    ? {
-        initial: reduceMotion ? false : 'hidden',
-        animate: reduceMotion ? undefined : 'show',
-      }
-    : {
-        initial: reduceMotion ? false : 'hidden',
-        whileInView: reduceMotion ? undefined : 'show',
-        viewport: isMobile ? viewportOnceMobile : viewportOnce,
-      };
+  const Tag = as;
 
   return (
-    <MotionTag
-      className={className}
-      variants={variants}
-      transition={{ ...motionTransitions.reveal, delay }}
-      {...triggerProps}
+    <Tag
+      className={className ? `reveal-${direction} ${className}` : `reveal-${direction}`}
+      style={{
+        animationDelay: `${delay}s`,
+        ['--reveal-from' as string]: clipHidden[direction],
+      }}
     >
       {children}
-    </MotionTag>
+    </Tag>
   );
 }

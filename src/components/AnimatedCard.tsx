@@ -1,16 +1,12 @@
 import { motion, useReducedMotion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import type { ReactNode, PointerEvent as ReactPointerEvent } from 'react';
-import { motionTransitions, motionVariants, motionSprings, viewportOnce, viewportOnceMobile } from '../lib/motion';
+import { motionSprings } from '../lib/motion';
 
 type AnimatedCardProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
-  /**
-   * Optional label rendered next to the cursor on hover (desktop only).
-   * Sets data-cursor-label on the card root for CursorLabel to read.
-   */
   cursorLabel?: string;
 };
 
@@ -20,7 +16,6 @@ function useIsMobile() {
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 640px)');
     setIsMobile(mq.matches);
-
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
@@ -29,20 +24,17 @@ function useIsMobile() {
   return isMobile;
 }
 
-const TILT_RANGE = 4; // degrees (-4 to +4)
+const TILT_RANGE = 4;
 
 export default function AnimatedCard({ children, className = '', delay = 0, cursorLabel }: AnimatedCardProps) {
   const reduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
   const ref = useRef<HTMLDivElement>(null);
 
-  // Normalized cursor position within the card (-0.5 to +0.5).
   const px = useMotionValue(0);
   const py = useMotionValue(0);
-
   const rotateY = useTransform(px, [-0.5, 0.5], [-TILT_RANGE, TILT_RANGE]);
   const rotateX = useTransform(py, [-0.5, 0.5], [TILT_RANGE, -TILT_RANGE]);
-
   const springRotateX = useSpring(rotateX, motionSprings.snappy);
   const springRotateY = useSpring(rotateY, motionSprings.snappy);
 
@@ -64,18 +56,11 @@ export default function AnimatedCard({ children, className = '', delay = 0, curs
   return (
     <motion.div
       ref={ref}
-      className={`card ${className}`.trim()}
+      className={`card card-reveal ${className}`.trim()}
       data-cursor-label={cursorLabel}
-      initial={reduceMotion ? false : 'hidden'}
-      whileInView={reduceMotion ? undefined : 'show'}
-      variants={motionVariants.slideUp}
-      viewport={isMobile ? viewportOnceMobile : viewportOnce}
-      whileHover={tiltEnabled ? { y: -4 } : undefined}
-      transition={{ ...motionTransitions.normal, delay }}
-      onPointerMove={tiltEnabled ? handleMove : undefined}
-      onPointerLeave={tiltEnabled ? handleLeave : undefined}
-      style={
-        tiltEnabled
+      style={{
+        animationDelay: `${delay}s`,
+        ...(tiltEnabled
           ? {
               rotateX: springRotateX,
               rotateY: springRotateY,
@@ -83,8 +68,11 @@ export default function AnimatedCard({ children, className = '', delay = 0, curs
               transformPerspective: 1000,
               willChange: 'transform',
             }
-          : undefined
-      }
+          : {}),
+      }}
+      whileHover={tiltEnabled ? { y: -4 } : undefined}
+      onPointerMove={tiltEnabled ? handleMove : undefined}
+      onPointerLeave={tiltEnabled ? handleLeave : undefined}
     >
       {children}
     </motion.div>

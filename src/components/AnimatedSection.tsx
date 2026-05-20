@@ -1,7 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
-import { motionTransitions, motionVariants, viewportOnce, viewportOnceMobile } from '../lib/motion';
 
 type AnimatedSectionProps = {
   children: ReactNode;
@@ -9,35 +6,18 @@ type AnimatedSectionProps = {
   delay?: number;
 };
 
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 640px)');
-    setIsMobile(mq.matches);
-
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
-
-  return isMobile;
-}
-
+/**
+ * Section entrance animation — clip-path wipe via CSS @keyframes.
+ * Uses pure CSS animation with a delay, avoiding Framer Motion hydration issues.
+ * The animation plays automatically after mount with no JS dependency.
+ */
 export default function AnimatedSection({ children, className, delay = 0 }: AnimatedSectionProps) {
-  const reduceMotion = useReducedMotion();
-  const isMobile = useIsMobile();
-
   return (
-    <motion.section
-      className={className}
-      initial={reduceMotion ? false : 'hidden'}
-      whileInView={reduceMotion ? undefined : 'show'}
-      variants={motionVariants.clipUp}
-      viewport={isMobile ? viewportOnceMobile : viewportOnce}
-      transition={{ ...motionTransitions.reveal, delay }}
+    <section
+      className={className ? `section-reveal ${className}` : 'section-reveal'}
+      style={{ animationDelay: `${delay}s` }}
     >
       {children}
-    </motion.section>
+    </section>
   );
 }
